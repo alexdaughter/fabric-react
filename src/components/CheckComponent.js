@@ -4,7 +4,7 @@ import { Context } from './Context';
 
 export default function CheckComponent ({ item }) {
 
-    const {items, setItems, state, setState} = useContext(Context);
+    const {items, setItems} = useContext(Context);
 
     const handleVisible = (e) => {
         const idEdit = parseInt(e.currentTarget.getAttribute('data-id'));
@@ -28,7 +28,15 @@ export default function CheckComponent ({ item }) {
 
     const editTask  = (e) => {
         const idToEdit = parseInt(e.target.getAttribute('data-id'));
+        console.log(idToEdit);
         items[idToEdit].Name = e.target.value;
+        setItems([...items]);
+    }
+
+    const handleCheck = (e) => {
+       const idCheckItem = e.currentTarget.id;
+       const isChecked = e.currentTarget.checked;
+        items[idCheckItem].Active = isChecked;
         setItems([...items]);
     }
 
@@ -38,7 +46,7 @@ export default function CheckComponent ({ item }) {
             {!item.Editable && 
                 <Stack horizontal horizontalAlign="center">
                 <div>
-                    <Checkbox label={item.Name} />
+                    <Checkbox label={item.Name} onChange={handleCheck} id={item.Id} />
                 </div>
                 <div>
                 <IconButton iconProps={{iconName: "Edit"}} title="Edit" ariaLabel="Edit" onClick={handleEdit} data-id={item.Id}/>
