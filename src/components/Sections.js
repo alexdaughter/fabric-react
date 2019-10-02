@@ -4,12 +4,18 @@ import { Context } from './Context';
 
 export default function Sections ({ item }) {
     
-    const {items, setItems, show, setShow} = useContext(Context);
+    const {items, setItems, showCompleted, showActive, setShowCompleted, setShowActive} = useContext(Context);
 
     const handleSectionActive = (e) => {
-        const SectionActive = items.filter(item => item.Active)
+        const SectionActive = items.filter(item => !item.Active)
         console.log(SectionActive);
-         setShow([SectionActive]);
+         setShowActive([SectionActive]);
+    }
+
+    const handleSectionCompleted = (e) => {
+        const SectionCompleted = items.filter(item => item.Active)
+        console.log(SectionCompleted);
+         setShowCompleted([SectionCompleted]);
     }
 
     return(
@@ -32,7 +38,7 @@ export default function Sections ({ item }) {
                 }}>
                 </PivotItem>
             </Pivot>
-            <Pivot>
+            <Pivot onLinkClick={handleSectionCompleted}>
                 <PivotItem
                 headerText="Completed"
                 headerButtonProps={{
