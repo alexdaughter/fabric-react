@@ -24,7 +24,7 @@ export default function MyInput() {
                 { Name: state, 
                     Id: newId,
                     Editable: false,
-                    Active: false
+                    Checked: false
                 }          
             ]
         ) 
@@ -38,7 +38,7 @@ export default function MyInput() {
             <TextField value={state} onChange={uploadState} onKeyPress={(enter) => {enter.key === 'Enter' && handleAddItem()}}/>
             <DefaultButton primary text="Click to add" onClick={handleAddItem}/>
             </Stack>
-            <Sections />
+            <Sections items={items}/>
             <ul>
                 {items.map( item =><li><CheckComponent item={item} data-id={item.Id}/></li> )}
             </ul>

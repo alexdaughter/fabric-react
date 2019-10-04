@@ -37,13 +37,12 @@ export default function CheckComponent ({ item }) {
        const idCheckItem = parseInt(e.currentTarget.id)-1;
        console.log(idCheckItem);
        const isChecked = e.currentTarget.checked;
-        items[idCheckItem].Active = isChecked;
+        items[idCheckItem].Checked = isChecked;
         setItems([...items]);
     }
 
     return (
         <div className="taskList">
-
             {!item.Editable && 
                 <Stack horizontal horizontalAlign="center">
                 <div>
