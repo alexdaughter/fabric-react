@@ -6,26 +6,32 @@ import  CheckComponent  from './CheckComponent';
 
 export default function Sections ({ item }) {
     
-    const {showActive  , showCompleted, setShowCompleted, setShowActive} = useContext(Context);
+    const {items, filter, setFilter} = useContext(Context);
 
     const handleSectionActive = (e) => {
-        const SectionActive = showActive.filter(item => !item.Checked)
-        console.log(SectionActive);
-        setShowActive([SectionActive]);
+        setFilter('Active');
+        // const SectionActive = items.filter(item => !item.Checked)
+        // console.log(SectionActive);
+        // setShowActive(SectionActive);
         // const pepe = showActive.map(item => item)   
         // console.log(pepe) 
     }
 
     const handleSectionCompleted = (e) => {
-        const SectionCompleted = showActive.filter(item => item.Checked)
-        console.log(SectionCompleted);
-        setShowCompleted([SectionCompleted]);
+        setFilter('Completed');
+        // const SectionCompleted =  items.filter(item => item.Checked)
+        // console.log(SectionCompleted);
+        // setShowCompleted(SectionCompleted);
+    }
+
+    const handleSectionAll = (e) => {
+        setFilter('All');
     }
 
     return(
         <>
             <Stack horizontal horizontalAlign="center">
-                <Pivot>
+                <Pivot onLinkClick={handleSectionAll}>
                     <PivotItem
                     headerText="All"
                     headerButtonProps={{
@@ -55,12 +61,6 @@ export default function Sections ({ item }) {
                     </PivotItem>
                 </Pivot>
             </Stack>
-            <Stack>
-                <ul>
-                    {showActive.map(item => <li><CheckComponent item={item}/></li>)}
-                </ul>
-            </Stack>
-
         </>
     )
 }

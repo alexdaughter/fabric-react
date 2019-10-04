@@ -7,7 +7,7 @@ import Sections from './Sections';
 
 export default function MyInput() {
 
-    const {items, setItems, state, setState} = useContext(Context);
+    const {items, setItems, state, setState, filter} = useContext(Context);
 
     const uploadState  = (e) => {
         setState(e.target.value);
@@ -30,6 +30,16 @@ export default function MyInput() {
         ) 
         setState('')
     }  
+
+    let filteredItems;
+
+    if (filter === 'Active') {
+        filteredItems = items.filter(item => !item.Checked)
+    } else if (filter === 'Completed') {
+        filteredItems = items.filter(item => item.Checked)
+    } else {
+        filteredItems = items;
+    }
     
     return(
         <div>
@@ -40,7 +50,7 @@ export default function MyInput() {
             </Stack>
             <Sections items={items}/>
             <ul>
-                {items.map( item =><li><CheckComponent item={item} data-id={item.Id}/></li> )}
+                {filteredItems.map( item =><li><CheckComponent  item={item} data-id={item.Id}/></li> )}
             </ul>
         </div>
     )

@@ -46,7 +46,7 @@ export default function CheckComponent ({ item }) {
             {!item.Editable && 
                 <Stack horizontal horizontalAlign="center">
                 <div>
-                    <Checkbox label={item.Name} onChange={handleCheck} id={item.Id} />
+                    <Checkbox checked={item.Checked} label={item.Name} onChange={handleCheck} id={item.Id} />
                 </div>
                 <div>
                 <IconButton iconProps={{iconName: "Edit"}} title="Edit" ariaLabel="Edit" onClick={handleEdit} data-id={item.Id}/>
