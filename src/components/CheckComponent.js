@@ -28,16 +28,16 @@ export default function CheckComponent ({ item }) {
 
     const editTask  = (e) => {
         const idToEdit = parseInt(e.target.getAttribute('data-id')-1);
-        console.log(idToEdit);
         items[idToEdit].Name = e.target.value;
         setItems([...items]);
     }
 
     const handleCheck = (e) => {
-       const idCheckItem = parseInt(e.currentTarget.id)-1;
-       console.log(idCheckItem);
-       const isChecked = e.currentTarget.checked;
-        items[idCheckItem].Checked = isChecked;
+       const idCheckItem = parseInt(e.currentTarget.id);
+       const findedIndex = items.findIndex(item => parseInt(item.Id) === idCheckItem)
+       console.log(findedIndex);
+        const checked = items[findedIndex].Checked;
+        items[findedIndex].Checked = !checked;
         setItems([...items]);
     }
 

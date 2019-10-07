@@ -15,8 +15,8 @@ export default function MyInput() {
    
     const handleAddItem = () => {
 
-        const lastId = items.length-1;
-        const newId =  items[lastId] ? items[lastId].Id+1 : 1 ;
+        const lastId =items.length ? items[items.length-1].Id : 0;
+        const newId =  lastId+1 ;
 
         setItems(
             [
@@ -40,7 +40,12 @@ export default function MyInput() {
     } else {
         filteredItems = items;
     }
-    
+
+    const handleRemoveCompleted = (e) => {
+        const completedItems = items.filter(item => !item.Checked);
+        setItems(completedItems);
+    }
+     
     return(
         <div>
             <h1>ToDos</h1>
@@ -52,6 +57,7 @@ export default function MyInput() {
             <ul class="ms-Grid" dir="ltr">
                 {filteredItems.map( item =><li><CheckComponent item={item} data-id={item.Id}/></li> )}
             </ul>
+            <DefaultButton primary text="Clear Completed" onClick={handleRemoveCompleted} />
         </div>
     )
 }
