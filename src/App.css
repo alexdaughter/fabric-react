@@ -23,16 +23,17 @@
 
 ul {
   list-style: none;
-  width: 400px;
+  width: 300px;
   margin: 30px auto;
-}
-
-.taskList {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  padding: 0;
 }
 
-li{
-  justify-content: space-between;
-  width: inherit;
+
+.check {
+  align-items: center;
+  margin: auto;
+  margin-left: 0;
+
 }

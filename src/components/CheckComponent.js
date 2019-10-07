@@ -42,16 +42,16 @@ export default function CheckComponent ({ item }) {
     }
 
     return (
-        <div className="taskList">
+        <div className="taskList ms-Grid-row">
             {!item.Editable && 
                 <Stack horizontal horizontalAlign="center">
-                <div>
-                    <Checkbox checked={item.Checked} label={item.Name} onChange={handleCheck} id={item.Id} />
-                </div>
-                <div>
-                <IconButton iconProps={{iconName: "Edit"}} title="Edit" ariaLabel="Edit" onClick={handleEdit} data-id={item.Id}/>
-                <IconButton iconProps={{iconName: "Cancel"}} title="Cancel" ariaLabel="Cancel" onClick={handleDelete} data-id={item.Id}/>
-                </div>       
+                    <div className="check ms-Grid-col ms-sm12 ms-lg4">
+                        <Checkbox checked={item.Checked} label={item.Name} onChange={handleCheck} id={item.Id} />
+                    </div>
+                    <div>
+                    <IconButton iconProps={{iconName: "Edit"}} title="Edit" ariaLabel="Edit" onClick={handleEdit} data-id={item.Id}/>
+                    <IconButton iconProps={{iconName: "Cancel"}} title="Cancel" ariaLabel="Cancel" onClick={handleDelete} data-id={item.Id}/>
+                    </div>       
                 </Stack>}
 
             {item.Editable && 

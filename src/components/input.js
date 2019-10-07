@@ -49,8 +49,8 @@ export default function MyInput() {
             <DefaultButton primary text="Click to add" onClick={handleAddItem}/>
             </Stack>
             <Sections items={items}/>
-            <ul>
-                {filteredItems.map( item =><li><CheckComponent  item={item} data-id={item.Id}/></li> )}
+            <ul class="ms-Grid" dir="ltr">
+                {filteredItems.map( item =><li><CheckComponent item={item} data-id={item.Id}/></li> )}
             </ul>
         </div>
     )
